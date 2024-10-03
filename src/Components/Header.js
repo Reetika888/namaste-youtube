@@ -1,11 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/constants"
 
 const Header = ()=> {
+    const [searchQuery,setSearchQuery] = useState("");
     const dispatch = useDispatch();
     const toggleMenuHandler = ()=> {
       dispatch(toggleMenu());
+    }
+
+    useEffect(()=>{
+        // API Call
+
+        // make an api call after every key press
+        //  but if the difference between 2 api calls is less than 200ms
+        //  decline api call
+      const timer =  setTimeout(()=> getSearchSuggestions(),200);
+
+      return ()=>{
+        clearTimeout(timer);
+      };
+
+    },[searchQuery]);
+
+
+    //  key => i
+    //  -  render the component
+    //  -  useEffect()
+    //  -  start timer => amke api call after 200ms
+
+    //  key => iP
+    //  -  destroy the component(useEffect return method)
+    //  -  rerenders the component
+    //  -  useEffect()
+    //  -  start new timer => amke api call after 200ms
+
+    const getSearchSuggestions = async ()=> {
+        console.log(YOUTUBE_SEARCH_API+searchQuery)
+        const data = await fetch(YOUTUBE_SEARCH_API+searchQuery);
+        const json = await data.json();
+        console.log("json",json[1])
     }
 
     return (
@@ -17,7 +52,10 @@ const Header = ()=> {
                 </a>
             </div>
             <div className="col-span-10">
-                <input className="w-1/2 p-2 border border-gray-400 rounded-l-full" type="text" />
+                <input className="w-1/2 p-2 border border-gray-400 rounded-l-full" type="text" 
+                value={searchQuery}
+                onChange={(e)=>setSearchQuery(e.target.value)}
+                />
                 <button className="border border-gray-400 p-2 rounded-r-full bg-gray-100">💭</button>
             </div>
             <div className="col-span-1">
