@@ -35,3 +35,5 @@ Performance:
 
 
 <!-- LRU Caches (Least Recently Used): we can restrict our cache only to store 100 keys.As soon as it is above 100 keys start removing key from top.Do not bloat redux store. (FIFO) -->
+
+<!-- Live Chat >>>>>>>>>>> Infinite Scroll >>>>>> Pagination -->
