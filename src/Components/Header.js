@@ -55,10 +55,8 @@ const Header = ()=> {
     //  -  start new timer => amke api call after 200ms
 
     const getSearchSuggestions = async ()=> {
-        console.log(YOUTUBE_SEARCH_API+searchQuery)
         const data = await fetch(YOUTUBE_SEARCH_API+searchQuery);
         const json = await data.json();
-        console.log("json",json[1])
         setSuggestions(json[1]);
         dispatch(cacheResults({
             [searchQuery] :  json[1],

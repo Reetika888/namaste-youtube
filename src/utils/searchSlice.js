@@ -9,8 +9,6 @@ const searchSlice = createSlice({
 
     reducers:{
       cacheResults : (state,action) => {
-        console.log("state",state);
-        console.log("payload",action);
         // {"ip":["iphone","iphone11"]}
          state = Object.assign(state,action.payload);
       }
