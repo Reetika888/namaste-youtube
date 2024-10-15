@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Debouncing:
 
 typing slow => iphone(difference between two keystrokes is high) approx 200ms => suggestions(to give better user experience)
@@ -37,3 +38,6 @@ Performance:
 <!-- LRU Caches (Least Recently Used): we can restrict our cache only to store 100 keys.As soon as it is above 100 keys start removing key from top.Do not bloat redux store. (FIFO) -->
 
 <!-- Live Chat >>>>>>>>>>> Infinite Scroll >>>>>> Pagination -->
+=======
+# namaste-youtube
+>>>>>>> 1b9caa0005a56429475dadfc6e84115981dcd880
